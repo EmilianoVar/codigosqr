@@ -9,4 +9,40 @@
 
     <script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.js"></script>
 </head>
-<body> 
+<body>
+
+    <div class="container">
+
+        <h1>Validador de Códigos QR Seguros</h1>
+
+        <p class="descripcion">
+            Cargue una imagen con un código QR para analizar la seguridad del enlace antes de acceder a él.
+        </p>
+
+        <input type="file" id="qrInput" accept="image/*">
+
+        <canvas id="canvas" hidden></canvas>
+
+        <div id="resultado" class="resultado oculto">
+
+            <h2>Diagnóstico de Seguridad</h2>
+
+            <div class="info">
+                <strong>Contenido detectado:</strong>
+                <p id="urlDetectada"></p>
+            </div>
+
+            <div id="diagnostico"></div>
+
+            <button id="abrirBtn" class="btn">
+                Continuar al enlace
+            </button>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

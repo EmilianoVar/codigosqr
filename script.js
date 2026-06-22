@@ -8,3 +8,51 @@ const diagnostico = document.getElementById("diagnostico");
 const abrirBtn = document.getElementById("abrirBtn");
 
 let urlFinal = ""; 
+qrInput.addEventListener("change", function(event){
+
+    const archivo = event.target.files[0];
+
+    if(!archivo){
+        return;
+    }
+
+    const lector = new FileReader();
+
+    lector.onload = function(){
+
+        const imagen = new Image();
+
+        imagen.onload = function(){
+
+            canvas.width = imagen.width;
+            canvas.height = imagen.height;
+
+            ctx.drawImage(imagen, 0, 0);
+
+            const imageData = ctx.getImageData(
+                0,
+                0,
+                canvas.width,
+                canvas.height
+            );
+
+            const qr = jsQR(
+                imageData.data,
+                imageData.width,
+                imageData.height
+            );
+
+            if(qr){
+                analizarContenido(qr.data);
+            }else{
+                alert("No se detectó ningún código QR en la imagen.");
+            }
+
+        };
+
+        imagen.src = lector.result;
+    };
+
+    lector.readAsDataURL(archivo);
+
+});

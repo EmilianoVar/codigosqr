@@ -137,3 +137,14 @@ function analizarContenido(contenido){
         abrirBtn.style.display = "none";
     }
 }
+abrirBtn.addEventListener("click", function(){
+
+    const confirmar = confirm(
+        "El sistema ha realizado un análisis básico de seguridad. ¿Desea continuar al enlace?"
+    );
+
+    if(confirmar){
+        window.open(urlFinal, "_blank");
+    }
+
+});

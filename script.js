@@ -85,3 +85,21 @@ function analizarContenido(contenido){
                 <p>Advertencia: La URL utiliza HTTP en lugar de HTTPS.</p>
             `;
         }
+                const acortadores = [
+            "bit.ly",
+            "tinyurl.com",
+            "t.co",
+            "goo.gl",
+            "shorturl.at",
+            "cutt.ly",
+            "ow.ly"
+        ];
+
+        if(acortadores.includes(url.hostname.toLowerCase())){
+
+            riesgo += 2;
+
+            reporte += `
+                <p>Advertencia: Se detectó un servicio de acortamiento de enlaces.</p>
+            `;
+        }

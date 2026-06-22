@@ -126,3 +126,14 @@ function analizarContenido(contenido){
         `;
 
         diagnostico.innerHTML = reporte;
+            }catch(error){
+
+        diagnostico.innerHTML = `
+            <h3 class="malicioso">
+                El contenido del código QR no corresponde a una URL válida.
+            </h3>
+        `;
+
+        abrirBtn.style.display = "none";
+    }
+}

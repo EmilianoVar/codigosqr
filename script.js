@@ -77,3 +77,11 @@ function analizarContenido(contenido){
             <p><strong>Dominio:</strong> ${url.hostname}</p>
             <p><strong>Ruta:</strong> ${url.pathname}</p>
         `; 
+        if(url.protocol === "http:"){
+
+            riesgo += 2;
+
+            reporte += `
+                <p>Advertencia: La URL utiliza HTTP en lugar de HTTPS.</p>
+            `;
+        }

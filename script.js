@@ -56,3 +56,24 @@ qrInput.addEventListener("change", function(event){
     lector.readAsDataURL(archivo);
 
 });
+function analizarContenido(contenido){
+
+    resultado.classList.remove("oculto");
+    abrirBtn.style.display = "inline-block";
+
+    urlDetectada.textContent = contenido;
+
+    let riesgo = 0;
+    let reporte = "";
+
+    try{
+
+        const url = new URL(contenido);
+
+        urlFinal = contenido;
+
+        reporte += `
+            <p><strong>Protocolo:</strong> ${url.protocol}</p>
+            <p><strong>Dominio:</strong> ${url.hostname}</p>
+            <p><strong>Ruta:</strong> ${url.pathname}</p>
+        `; 

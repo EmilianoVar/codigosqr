@@ -103,3 +103,26 @@ function analizarContenido(contenido){
                 <p>Advertencia: Se detectó un servicio de acortamiento de enlaces.</p>
             `;
         }
+                let nivel = "";
+        let clase = "";
+
+        if(riesgo === 0){
+            nivel = "Seguro";
+            clase = "seguro";
+        }
+        else if(riesgo <= 3){
+            nivel = "Sospechoso";
+            clase = "sospechoso";
+        }
+        else{
+            nivel = "Malicioso";
+            clase = "malicioso";
+        }
+
+        reporte += `
+            <h3 class="${clase}">
+                Nivel de riesgo: ${nivel}
+            </h3>
+        `;
+
+        diagnostico.innerHTML = reporte;
